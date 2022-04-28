@@ -1,0 +1,15 @@
+docker compose para inicializar un repositorio es un servidor local con gitea
+
+verificamos que los servicios ya esten corriendo
+
+localhost:8080
+
+para configurar los valores de la base de datos vamos a la ruta
+
+localhost:8080/install
+
+terminamos la configuracion de la base de datos,los datos de coneccion se encuentran en el yaml
+
+tener en cuenta que el nombre del servidor corresponde al nombre del contenedor [db]
+
+se podran registrar usuarios y configurar el sitio, para mayor informacion https://docs.gitea.io/en-us/

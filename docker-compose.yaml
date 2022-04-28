@@ -1,0 +1,39 @@
+# version del yamel
+version: '3.8'
+
+# nos va a ayudar a agrupar los componentes
+services:
+
+  gitea:
+    image: gitea/gitea:1.16.6
+    container_name: gitea
+    restart: always
+    ports:
+      - "8080:3000"
+      - "22:22"
+    depends_on:
+      - db
+    volumes:
+      - gitea_data:/data
+    networks:
+      - gitea
+  
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_DB=gitea
+    networks:
+      - gitea
+    volumes:
+      - ./psql_data:/var/lib/postgresql/data
+
+
+networks:
+  gitea:
+
+volumes:
+  gitea_data:
+  psql_data:
